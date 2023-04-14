@@ -29,6 +29,15 @@ class Install
     ];
 
     /**
+     * 移动的文件夹
+     *
+     * @var array
+     */
+    protected static $dir_relation = [
+        'process/config' => 'config/channel',
+    ];
+
+    /**
      * 安装
      *
      * @return void
@@ -40,7 +49,33 @@ class Install
         // 移动文件
         foreach (static::$file_relation as $source => $dest) {
             $sourceFile = $source_path . $source;
+            Plugin::copyFile($sourceFile, $dest);
+        }
+        // 移动目录
+        foreach (static::$dir_relation as $source => $dest) {
+            $sourceDir = $source_path . $source;
+            Plugin::copydir($sourceDir, $dest);
+        }
+    }
+
+    /**
+     * 更新升级
+     *
+     * @return void
+     */
+    public function update()
+    {
+        // 创建框架文件
+        $source_path = __DIR__ . DIRECTORY_SEPARATOR;
+        // 移动文件
+        foreach (static::$file_relation as $source => $dest) {
+            $sourceFile = $source_path . $source;
             Plugin::copyFile($sourceFile, $dest, true);
+        }
+        // 移动目录
+        foreach (static::$dir_relation as $source => $dest) {
+            $sourceDir = $source_path . $source;
+            Plugin::copydir($sourceDir, $dest, true);
         }
     }
 

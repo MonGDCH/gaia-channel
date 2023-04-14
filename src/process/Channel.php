@@ -4,29 +4,21 @@ declare(strict_types=1);
 
 namespace process;
 
+use mon\env\Config;
 use Channel\Server;
 use Workerman\Worker;
+use gaia\ProcessTrait;
 use gaia\interfaces\ProcessInterface;
 
 /**
  * workermn\channel 进程通信服务
  * 
  * @author Mon <985558837@qq.com>
- * @version 1.0.0
+ * @version 1.0.1   2023-04-13
  */
 class Channel extends Server implements ProcessInterface
 {
-    /**
-     * 进程配置
-     *
-     * @var array
-     */
-    protected static $processConfig = [
-        // 监听协议断开
-        'listen'    => 'frame://0.0.0.0:2206',
-        // 进程数，必须是1
-        'count'     =>  1,
-    ];
+    use ProcessTrait;
 
     /**
      * 是否启用进程
@@ -35,7 +27,7 @@ class Channel extends Server implements ProcessInterface
      */
     public static function enable(): bool
     {
-        return true;
+        return Config::instance()->get('channel.process.enable', false);
     }
 
     /**
@@ -45,7 +37,7 @@ class Channel extends Server implements ProcessInterface
      */
     public static function getProcessConfig(): array
     {
-        return static::$processConfig;
+        return Config::instance()->get('channel.process.config', []);
     }
 
     /**
@@ -63,7 +55,7 @@ class Channel extends Server implements ProcessInterface
      */
     public function onWorkerStart(Worker $worker)
     {
+        $worker->channels = [];
         $this->_worker = $worker;
-        $this->channels = [];
     }
 }
