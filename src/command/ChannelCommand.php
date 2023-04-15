@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mon\channel\com;
+namespace gaia\channel\command;
 
 use mon\util\File;
 use mon\console\Input;
@@ -112,6 +112,7 @@ TPL;
     public function execute(Input $input, Output $output)
     {
         $args = $input->getArgs();
+        dd($args);exit;
         $now = date('Y-m-d');
         foreach ($args as $name) {
             $class = ucfirst($name);
