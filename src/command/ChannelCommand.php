@@ -112,7 +112,6 @@ TPL;
     public function execute(Input $input, Output $output)
     {
         $args = $input->getArgs();
-        dd($args);exit;
         $now = date('Y-m-d');
         foreach ($args as $name) {
             $class = ucfirst($name);
