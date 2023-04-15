@@ -23,6 +23,9 @@
     "autoload": {
         "psr-4": {
             "gaia\\channel\\": "src/"
-        }
+        },
+        "files": [
+            "src/support.php"
+        ]
     }
 }

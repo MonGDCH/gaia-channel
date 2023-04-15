@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "workerman/channel",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/channel/v1.1.0/workerman-channel-v1.1.0.zip",
-                "reference": "3df772d0d20d4cebfcfd621c33d1a1ab732db523",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/channel/v1.2.0/workerman-channel-v1.2.0.zip",
+                "reference": "fbfb81c7ebc5858c4053f226cbb5d15fe670ff6e",
                 "shasum": ""
             },
             "require": {
@@ -28,15 +28,15 @@
                 "MIT"
             ],
             "homepage": "http://www.workerman.net",
-            "time": "2021-02-08T02:45:42+00:00"
+            "time": "2023-04-04T02:47:35+00:00"
         },
         {
             "name": "workerman/workerman",
-            "version": "v4.1.1",
+            "version": "v4.1.9",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/workerman/v4.1.1/workerman-workerman-v4.1.1.zip",
-                "reference": "e535daf8c5778dd05ab75bcc0ba9e1959b1a4ce5",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/workerman/v4.1.9/workerman-workerman-v4.1.9.zip",
+                "reference": "1f92d02c26106b5fbe6f61ea776198aad6e426f7",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2022-09-19T04:08:49+00:00"
+            "time": "2023-03-10T13:59:12+00:00"
         }
     ],
     "packages-dev": [],
