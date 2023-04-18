@@ -34,7 +34,7 @@ class Install
      * @var array
      */
     protected static $dir_relation = [
-        'process/config' => 'config/channel',
+        'config' => 'config/channel',
     ];
 
     /**
