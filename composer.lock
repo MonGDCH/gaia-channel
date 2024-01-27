@@ -9,9 +9,14 @@
         {
             "name": "workerman/channel",
             "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/channel.git",
+                "reference": "fbfb81c7ebc5858c4053f226cbb5d15fe670ff6e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/channel/v1.2.0/workerman-channel-v1.2.0.zip",
+                "url": "https://api.github.com/repos/walkor/channel/zipball/fbfb81c7ebc5858c4053f226cbb5d15fe670ff6e",
                 "reference": "fbfb81c7ebc5858c4053f226cbb5d15fe670ff6e",
                 "shasum": ""
             },
@@ -24,19 +29,29 @@
                     "Channel\\": "./src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "homepage": "http://www.workerman.net",
+            "support": {
+                "issues": "https://github.com/walkor/channel/issues",
+                "source": "https://github.com/walkor/channel/tree/v1.2.0"
+            },
             "time": "2023-04-04T02:47:35+00:00"
         },
         {
             "name": "workerman/workerman",
-            "version": "v4.1.9",
+            "version": "v4.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/workerman.git",
+                "reference": "f7c9667c7b5387c01fa9e50ee79ed931e93ee76e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/workerman/workerman/v4.1.9/workerman-workerman-v4.1.9.zip",
-                "reference": "1f92d02c26106b5fbe6f61ea776198aad6e426f7",
+                "url": "https://api.github.com/repos/walkor/workerman/zipball/f7c9667c7b5387c01fa9e50ee79ed931e93ee76e",
+                "reference": "f7c9667c7b5387c01fa9e50ee79ed931e93ee76e",
                 "shasum": ""
             },
             "require": {
@@ -51,6 +66,7 @@
                     "Workerman\\": "./"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -68,7 +84,24 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2023-03-10T13:59:12+00:00"
+            "support": {
+                "email": "walkor@workerman.net",
+                "forum": "http://wenda.workerman.net/",
+                "issues": "https://github.com/walkor/workerman/issues",
+                "source": "https://github.com/walkor/workerman",
+                "wiki": "http://doc.workerman.net/"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/workerman",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/walkor",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2023-08-09T03:37:45+00:00"
         }
     ],
     "packages-dev": [],
