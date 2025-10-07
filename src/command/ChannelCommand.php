@@ -48,7 +48,7 @@ class ChannelCommand extends Command
 
 declare(strict_types=1);
 
-namespace app\process\channel;
+namespace support\process\channel;
 
 use gaia\Process;
 use Channel\Client;
@@ -124,8 +124,8 @@ TPL;
             $class = ucfirst($name);
             // 创建进程文件
             $content = sprintf($this->channel_tpl, $name, $class, $now, $class, $name, $name);
-            $path = APP_PATH . DIRECTORY_SEPARATOR . 'process' . DIRECTORY_SEPARATOR . 'channel' . DIRECTORY_SEPARATOR . $class . '.php';
-            $save = File::instance()->createFile($content, $path, false);
+            $path = PROCESS_PATH . DIRECTORY_SEPARATOR . 'channel' . DIRECTORY_SEPARATOR . $class . '.php';
+            $save = File::createFile($content, $path, false);
             if (!$save) {
                 $output->write("[error] Make {$name} channel process faild!");
                 continue;
