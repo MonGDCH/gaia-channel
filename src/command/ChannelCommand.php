@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace gaia\channel\command;
+namespace support\command\channel;
 
 use mon\util\File;
 use mon\console\Input;
@@ -48,14 +48,14 @@ class ChannelCommand extends Command
 
 declare(strict_types=1);
 
-namespace process\channel;
+namespace app\process\channel;
 
+use gaia\Process;
 use Channel\Client;
-use mon\\env\Config;
 use process\Channel;
 use Workerman\Worker;
-use gaia\ProcessTrait;
 use gaia\interfaces\ProcessInterface;
+
 
 /**
  * %s 通道进程
@@ -64,29 +64,31 @@ use gaia\interfaces\ProcessInterface;
  * @copyright Gaia
  * @version 1.0.0 %s
  */
-class %s implements ProcessInterface
+class %s extends Process implements ProcessInterface
 {
-    use ProcessTrait;
-
     /**
-     * 是否启用进程
+     * 进程配置
      *
-     * @return boolean
+     * @var array
      */
-    public static function enable(): bool
-    {
-        return Config::instance()->get('channel.%s.enable', false);
-    }
-
-    /**
-     * 获取进程配置
-     *
-     * @return array
-     */
-    public static function getProcessConfig(): array
-    {
-        return Config::instance()->get('channel.%s.config', []);
-    }
+    protected static \$processConfig = [
+        // 监听协议端口
+        'listen'        => '',
+        // 额外参数
+        'context'       => [],
+        // 进程数
+        'count'         => 1,
+        // 通信协议，一般不需要修改
+        'transport'     => 'tcp',
+        // 进程用户，一般不需要修改
+        'user'          => '',
+        // 进程用户组，一般不需要修改
+        'group'         => '',
+        // 是否开启端口复用
+        'reusePort'     => false,
+        // 是否允许进程重载
+        'reloadable'    => true,
+    ];
 
     /**
      * 进程启动
@@ -108,47 +110,6 @@ class %s implements ProcessInterface
 TPL;
 
     /**
-     * 配置文件模板
-     *
-     * @var string
-     */
-    protected $config_tpl = <<<TPL
-<?php
-
-/*
-|--------------------------------------------------------------------------
-| channel进程 %s 服务启动配置文件
-|--------------------------------------------------------------------------
-| 定义channel进程 %s 服务启动配置
-|
-*/
-
-return [
-    // 启用
-    'enable'    => true,
-    // 进程配置
-    'config'    => [
-        // 监听协议端口，channel进程一般为空即可
-        'listen'        => '',
-        // 额外参数
-        'context'       => [],
-        // 进程数
-        'count'         => 1,
-        // 通信协议，一般不需要修改
-        'transport'     => 'tcp',
-        // 进程用户
-        'user'          => '',
-        // 进程用户组
-        'group'         => '',
-        // 是否开启端口复用
-        'reusePort'     => false,
-        // 是否允许进程重载
-        'reloadable'    => true,
-    ]
-];
-TPL;
-
-    /**
      * 执行指令
      *
      * @param  Input  $in  输入实例
@@ -163,19 +124,10 @@ TPL;
             $class = ucfirst($name);
             // 创建进程文件
             $content = sprintf($this->channel_tpl, $name, $class, $now, $class, $name, $name);
-            $path = PROCESS_PATH . DIRECTORY_SEPARATOR . 'channel' . DIRECTORY_SEPARATOR . $class . '.php';
+            $path = APP_PATH . DIRECTORY_SEPARATOR . 'process' . DIRECTORY_SEPARATOR . 'channel' . DIRECTORY_SEPARATOR . $class . '.php';
             $save = File::instance()->createFile($content, $path, false);
             if (!$save) {
-                $output->write("[error] Make {$name} process faild!");
-                continue;
-            }
-
-            // 创建配置文件
-            $config_path = CONFIG_PATH . DIRECTORY_SEPARATOR . 'channel' . DIRECTORY_SEPARATOR . $name . '.php';
-            $config_content = sprintf($this->config_tpl, $class, $class);
-            $save = File::instance()->createFile($config_content, $config_path, false);
-            if (!$save) {
-                $output->write("Make {$name} process config faild!");
+                $output->write("[error] Make {$name} channel process faild!");
                 continue;
             }
 

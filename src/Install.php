@@ -24,9 +24,7 @@ class Install
      *
      * @var array
      */
-    protected static $file_relation = [
-        'process/Channel.php' => 'process/Channel.php'
-    ];
+    protected static $file_relation = [];
 
     /**
      * 移动的文件夹
@@ -34,7 +32,8 @@ class Install
      * @var array
      */
     protected static $dir_relation = [
-        'config' => 'config/channel',
+        'process' => 'support/channel',
+        'command' => 'support/command/channel',
     ];
 
     /**
@@ -42,27 +41,21 @@ class Install
      *
      * @return void
      */
-    public static function install()
-    {
-    }
+    public static function install() {}
 
     /**
      * 更新升级
      *
      * @return void
      */
-    public static function update()
-    {
-    }
+    public static function update() {}
 
     /**
      * 卸载
      *
      * @return void
      */
-    public static function uninstall()
-    {
-    }
+    public static function uninstall() {}
 
     /**
      * Gaia发布
