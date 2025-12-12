@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace support\process;
+namespace support\channel\process;
 
 use Channel\Server;
 use Workerman\Worker;

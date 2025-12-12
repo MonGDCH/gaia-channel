@@ -25,7 +25,7 @@ class Install
      * @var array
      */
     protected static $file_relation = [
-        'process/Channel.php' => 'support/process/Channel.php',
+        'channel.php'  => 'bin/channel.php',
     ];
 
     /**
@@ -34,7 +34,7 @@ class Install
      * @var array
      */
     protected static $dir_relation = [
-        'command' => 'support/command/channel',
+        'support' => 'support/channel',
     ];
 
     /**

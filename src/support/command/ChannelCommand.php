@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace support\command\channel;
+namespace support\channel\command;
 
 use mon\util\File;
 use mon\console\Input;
