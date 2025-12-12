@@ -53,7 +53,7 @@ namespace support\process\channel;
 use gaia\Process;
 use Channel\Client;
 use Workerman\Worker;
-use support\channel\Channel;
+use support\channel\process\Channel;
 use gaia\interfaces\ProcessInterface;
 
 
